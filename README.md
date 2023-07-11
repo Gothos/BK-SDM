@@ -1,7 +1,7 @@
 # BK-SDM
-An unofficial implementation of [BK-SDM](https://arxiv.org/abs/2305.15798).\n
+An unofficial implementation of [BK-SDM](https://arxiv.org/abs/2305.15798).<br>
 The modes "base","small" and "tiny" all require distillation to produce coherent outputs, mode midless is usable out of the box.
-The Stablediff_to_BKSDM class takes in a model card and the type of model to reduce to, and loads and converts a pipeline as its *pipe* attribute.\n
+The Stablediff_to_BKSDM class takes in a model card and the type of model to reduce to, and loads and converts a pipeline as its *pipe* attribute<br>
 ```
 model_type='tiny' # One of 'midless'/'base'/small'/'tiny'
 model_card=''  # Model Card of the U-net from huggingface
