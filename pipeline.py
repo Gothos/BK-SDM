@@ -8,7 +8,7 @@ class BKSDM():
         self.pipe.to(device)
         if model_type=='midless' or model_type== 'small':
           self.pipe.unet.mid_block=None
-        elif model_type=='base' or model_type=='small':
+        if model_type=='base' or model_type=='small':
           for i in range(3):
             delattr(self.pipe.unet.down_blocks[i].resnets,'1')
             delattr(self.pipe.unet.down_blocks[i].attentions,'1')
