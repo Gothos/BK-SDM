@@ -4,7 +4,10 @@ import diffusers
 import transformers
 class Stablediff_to_BKSDM():
     def __init__(self,model_id="runwayml/stable-diffusion-v1-5",torch_dtype=torch.float16,model_type='base',device='cuda',**kwargs):
-        self.pipe=diffusers.StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
+        if not torch.cuda.is_available():
+            device='cpu'
+            torch_dtype=torch.float32
+        self.pipe=diffusers.StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch_dtype)
         self.pipe.to(device)
         if model_type!='base':
           self.pipe.unet.mid_block=None
