@@ -21,13 +21,13 @@ class Stablediff_to_BKSDM():
           else:
               delattr(self.pipe.unet.down_blocks[3].resnets,'1')
           if model_type=='tiny':
-              self.pipe.unet.up_blocks[0]=unet.up_blocks[1]
-              self.pipe.unet.up_blocks[1]=unet.up_blocks[2]
-              self.pipe.unet.up_blocks[2]=unet.up_blocks[3]
+              self.pipe.unet.up_blocks[0]=self.pipe.unet.up_blocks[1]
+              self.pipe.unet.up_blocks[1]=self.pipe.unet.up_blocks[2]
+              self.pipe.unet.up_blocks[2]=self.pipe.unet.up_blocks[3]
               delattr(self.pipe.unet.up_blocks,'3')   
       else:
-          unet.up_blocks[0].resnets[1]=unet.up_blocks[0].resnets[2]
-          delattr(unet.up_blocks[0].resnets,'2')
+          self.pipe.unet.up_blocks[0].resnets[1]=self.pipe.unet.up_blocks[0].resnets[2]
+          delattr(self.pipe.unet.up_blocks[0].resnets,'2')
           
           delattr(self.pipe.unet.down_blocks[3].resnets,'1')
           self.pipe.unet.up_blocks[0].resnets[1]=self.pipe.unet.up_blocks[0].resnets[2]
