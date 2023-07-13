@@ -69,7 +69,7 @@ def unetprep(unet,model_type):
       for i in range(1,4):
           unet.up_blocks[i].attentions[1]=unet.up_blocks[i].attentions[2]
           delattr(unet.up_blocks[i].attentions,'2')
-          delattr(unet.up_blocks[i].resnets,'1')
+          delattr(unet.up_blocks[i].resnets,'2')
       if model_type=='tiny':
           for i in range(3):
            unet.up_blocks[i]=unet.up_blocks[i+1]
