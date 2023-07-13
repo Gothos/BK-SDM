@@ -67,6 +67,7 @@ def unetprep(unet,model_type):
       unet.up_blocks[0].resnets[1]=unet.up_blocks[0].resnets[2]
       delattr(unet.up_blocks[0].resnets,'2')
       for i in range(1,4):
+          unet.up_blocks[i].resnets[1]=unet.up_blocks[i].resnets[2]
           unet.up_blocks[i].attentions[1]=unet.up_blocks[i].attentions[2]
           delattr(unet.up_blocks[i].attentions,'2')
           delattr(unet.up_blocks[i].resnets,'2')
